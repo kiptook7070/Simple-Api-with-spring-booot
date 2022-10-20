@@ -1,13 +1,14 @@
 package com.kiptoo.SpringbyKiptoo.service;
 
 import com.kiptoo.SpringbyKiptoo.entity.Department;
+import com.kiptoo.SpringbyKiptoo.error.DepartmentNotFoundException;
 import com.kiptoo.SpringbyKiptoo.repository.DepartmentRepositoryInterface;
-import com.kiptoo.SpringbyKiptoo.service.DepartmentServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImplementation implements DepartmentServiceInterface {
@@ -23,8 +24,13 @@ public class DepartmentServiceImplementation implements DepartmentServiceInterfa
         return departmentRepositoryInterface.findAll();
     }
     @Override
-    public Department findDepartmnetById(Long departmentId) {
-        return departmentRepositoryInterface.findById(departmentId).get();
+    public Department findDepartmnetById(Long departmentId) throws DepartmentNotFoundException {
+// without exception handling---> return departmentRepositoryInterface.findById(departmentId).get();
+        Optional<Department> department = departmentRepositoryInterface.findById(departmentId);
+        if (!department.isPresent()){
+            throw new DepartmentNotFoundException("Department Not Found");
+        }
+        return department.get();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.kiptoo.SpringbyKiptoo.service;
 
 import com.kiptoo.SpringbyKiptoo.entity.Department;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.kiptoo.SpringbyKiptoo.error.DepartmentNotFoundException;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public interface DepartmentServiceInterface {
 
  public List<Department> getAllDepartments();
 
-    public Department findDepartmnetById(Long departmentId);
+    public Department findDepartmnetById(Long departmentId) throws DepartmentNotFoundException;
 
     public void deleteDepartmentById(Long departmentId);
 
