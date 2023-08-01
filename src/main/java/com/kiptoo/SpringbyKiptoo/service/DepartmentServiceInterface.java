@@ -6,16 +6,16 @@ import com.kiptoo.SpringbyKiptoo.error.DepartmentNotFoundException;
 import java.util.List;
 
 public interface DepartmentServiceInterface {
-   public Department addDepartment(Department department);
+    Department addDepartment(Department department);
 
- public List<Department> getAllDepartments();
+    List<Department> getAllDepartments();
 
-    public Department findDepartmnetById(Long departmentId) throws DepartmentNotFoundException;
+    Department findDepartmnetById(Long departmentId) throws DepartmentNotFoundException;
 
-    public void deleteDepartmentById(Long departmentId);
+    void deleteDepartmentById(Long departmentId);
 
-    public Department updateDepartment(Long departmentId, Department department);
+    Department updateDepartment(Long departmentId, Department department);
 
-  public Department getByDepartmentName(String departmentName);
+    Department getByDepartmentName(String departmentName);
 
 }
